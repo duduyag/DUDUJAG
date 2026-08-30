@@ -3,7 +3,7 @@
  * הקוד רץ בתוך Google Apps Script ומקבל את התשובות מהטופס ב-index.html.
  */
 
-const SPREADSHEET_ID = '1NghViUEwnLqLv4cAblYyNiyFzjltRer13Y0mQP956C0';
+const SPREADSHEET_ID = '1q-2ykgkSbvvopJQUwcQLYnBw5pkYpV3OWlsk02eFoEU';
 const SHEET_NAME = 'תשובות';
 const HEADERS = [
   'התקבל בשרת',

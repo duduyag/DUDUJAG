@@ -3,7 +3,7 @@
 טופס שביעות רצון קצר לשליחה למטופלים אחרי טיפול. התשובות מיועדות להיכתב
 אוטומטית לגיליון Google Sheets:
 
-https://docs.google.com/spreadsheets/d/1NghViUEwnLqLv4cAblYyNiyFzjltRer13Y0mQP956C0/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1q-2ykgkSbvvopJQUwcQLYnBw5pkYpV3OWlsk02eFoEU/edit?usp=sharing
 
 - `index.html` - עמוד הטופס עצמו
 - `apps-script.gs` - הקוד שרץ בתוך Google Apps Script ומקבל את התשובות
