@@ -1,6 +1,20 @@
+/**
+ * שאלון שביעות רצון - ד"ר דודו יגודייב
+ * הקוד רץ בתוך Google Apps Script ומקבל את התשובות מהטופס ב-index.html.
+ */
+
 const SPREADSHEET_ID = '1NghViUEwnLqLv4cAblYyNiyFzjltRer13Y0mQP956C0';
-const SHEET_NAME = 'Sheet1';
-const HEADERS = ['זמן שליחה','איך שמעת עלינו','מה הכריע להגיע אלינו','דירוג שביעות רצון','הערות','כתובת העמוד','דפדפן'];
+const SHEET_NAME = 'תשובות';
+const HEADERS = [
+  'התקבל בשרת',
+  'חותמת זמן מהדפדפן',
+  'איך שמע/ה עלינו',
+  'מה הכריע את ההחלטה',
+  'דירוג שביעות רצון',
+  'הערות',
+  'כתובת העמוד',
+  'דפדפן'
+];
 
 function ensureSheet_() {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -28,7 +42,8 @@ function doPost(e) {
     const sheet = ensureSheet_();
 
     sheet.appendRow([
-      data.timestamp || new Date().toISOString(),
+      new Date(),
+      data.timestamp || '',
       data.source || '',
       data.reason || '',
       data.rating || '',
@@ -45,4 +60,22 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({ ok: false, error: String(err && err.message ? err.message : err) }))
       .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+function test_doPost() {
+  const fakeEvent = {
+    postData: {
+      contents: JSON.stringify({
+        timestamp: new Date().toISOString(),
+        source: 'גוגל / חיפוש באינטרנט',
+        reason: 'מוניטין / ביקורות',
+        rating: '5',
+        comments: 'בדיקה',
+        pageUrl: 'https://duduyag.github.io/DUDUJAG/drdudu.co.il/',
+        userAgent: 'Apps Script manual test'
+      })
+    }
+  };
+
+  doPost(fakeEvent);
 }
